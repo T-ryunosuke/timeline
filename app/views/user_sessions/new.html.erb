@@ -1,0 +1,25 @@
+<% content_for(:title, t('.title')) %>
+
+<div class="container mx-auto mt-10" >
+  <div class="flex justify-center">
+
+      <div class="flex-grow max-w-64 md:max-w-sm">
+        <%= form_with url: login_path do |f| %>
+          <div class="py-8 md:mb-8">
+            <%= f.label :email, t(".email"), class: "text-sm" %>
+            <%= f.text_field :email, class: "form-design" %>
+          </div>
+
+          <div class="md:pb-14">
+            <%= f.label :password, t(".password"), class: "text-sm" %>
+            <%= f.text_field :password, class: "form-design" %>
+          </div>
+
+          <div class="text-center pt-10 md:pt-6">
+            <%= f.submit t('.login'), class: "form-design" %>
+          </div>
+        <% end %>
+      </div>
+
+  </div>
+</div>

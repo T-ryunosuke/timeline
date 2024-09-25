@@ -1,6 +1,11 @@
-
-  <p>トップページ</p>
-  <div class="flex ml-auto">
-    <button class="btn btn-outline-primary btn-s"><%= link_to "新規登録", new_user_path %></button>
-    <button class="btn btn-outline-primary btn-s"><%= link_to "ログイン", login_path %></button>
+<div class="container h-screen mx-auto" >
+  <div class="flex flex-col h-full justify-center space-y-8 pb-20">
+    <div class="text-5xl mx-auto">
+      <p>私の年表</p>
+    </div>
+    <div class="flex justify-center space-x-4">
+      <%= link_to t("static_pages.top.sign_up"), new_user_path, class: "w-1/4 flex justify-center cursor-pointer text-sm sm:text-base font-thin text-white border border-slate-600 bg-slate-600 hover:text-black hover:bg-white hover:shadow-lg transition duration-200 outline-none" %>
+      <%= link_to t("static_pages.top.login"), login_path, class: "w-1/4 flex justify-center cursor-pointer text-sm sm:text-base font-thin text-white border border-slate-600 bg-slate-600 hover:text-black hover:bg-white hover:shadow-lg transition duration-200 outline-none" %>
+    </div>
   </div>
+</div>

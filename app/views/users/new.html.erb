@@ -1,0 +1,31 @@
+<div class="container mt-4" >
+  <div class="d-flex justify-content-center">
+    <div class="flex-grow-1">
+      <%= form_with model: @user do |f| %>
+        <div class="pt-6">
+          <%= f.label :name, t(".name"), class: "text-sm" %>
+          <%= f.text_field :name, class: "sign_up" %>
+        </div>
+
+        <div class="py-8">
+          <%= f.label :email, t(".email"), class: "text-sm" %>
+          <%= f.text_field :email, class: "sign_up" %>
+        </div>
+
+        <div class="pb-8">
+          <%= f.label :password, t(".password"), class: "text-sm" %>
+          <%= f.text_field :password, class: "sign_up", id: "user_password" %>
+        </div>
+
+        <div class="pb-2 md:mb-8">
+          <%= f.label :password_confirmation, t(".password_confirmation"), class: "text-sm" %>
+          <%= f.text_field :password_confirmation, class: "sign_up" %>
+        </div>
+
+        <div class="text-center my-4">
+          <%= f.submit t('.submit'), class: "sign_up" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

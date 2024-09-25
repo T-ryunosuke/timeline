@@ -1,0 +1,76 @@
+ja:
+  helpers:
+    submit:
+      create: 登録
+      submit: 保存
+      update: 更新
+      edit: 編集
+      comment: 送信
+    label:
+      email: メールアドレス
+      password: パスワード
+  static_pages:
+    top:
+      title: トップページ
+      sign_up: ユーザー登録
+      login: ログイン
+      logout: ログアウト
+    privacy_policy:
+      title: プライバシーポリシー
+    terms_of_service:
+      title: 利用規約
+    contact:
+      title: お問い合わせ
+  user_sessions:
+    new:
+      title: ログイン
+      login: ログイン
+      email: メールアドレス
+      password: パスワード（4文字以上）
+    create:
+      success: ログインしました
+      failure: ログインに失敗しました
+    destroy:
+      success: ログアウトしました
+  users:
+    index:
+      title: ユーザー一覧
+    new:
+      title: ユーザー登録
+      name: 名前
+      email: メールアドレス
+      password: パスワード
+      password_confirmation: パスワード確認
+      submit: 登録
+    create:
+      success: ユーザー登録が完了しました
+      failure: ユーザー登録に失敗しました
+  timelines:
+    index:
+      title: 年表一覧
+    new:
+      title: 年表作成
+    create:
+      success: 年表を作成しました
+      failure: 年表を作成できませんでした
+    show:
+      title: 年表
+      edit: 編集
+    edit:
+      title: 年表編集
+    update:
+      success: 年表を更新しました
+      failure: 年表を更新できませんでした
+    delete:
+      success: 年表を削除しました
+  menu:
+    top: Top
+    list: List
+    new: Make
+    logout: Logout
+  pagination:
+    first: 最初
+    last: 最後
+    next: 次へ
+    previous: 前へ
+    truncate: "..."

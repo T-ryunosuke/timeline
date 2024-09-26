@@ -6,11 +6,21 @@
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag('favi.ico') %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
     rel="stylesheet"/>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGYQ4M14G2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-FGYQ4M14G2');
+    </script>
   </head>
 
   <body class="bg-slate-400">
@@ -24,6 +34,7 @@
 
     <div id="menu" class="fixed top-16 right-5 bg-white border border-gray-300 rounded-lg shadow-lg z-40 hidden">
       <ul class="p-2">
+        <li class="py-1"><%= link_to root_path do %>ホーム<% end %></li>
         <li class="py-1"><%= link_to milestones_path do %>年表リスト<% end %></li>
         <% if logged_in? %>
           <li class="py-1"><%= link_to new_milestone_path do %>年表作成<% end %></li>

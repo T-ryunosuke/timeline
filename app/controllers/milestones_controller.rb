@@ -9,7 +9,7 @@ class MilestonesController < ApplicationController
   end
 
   def create
-    @milestone = current_user.milestones.build(Milestone_params)
+    @milestone = current_user.milestones.build(milestone_params)
     if @milestone.save
       redirect_to milestones_path, success: t("milestones.create.success")
     else

@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+section:nth-of-type(even) {
+  background-color: #eee;
+}
+
+.horizontals li:nth-of-type(even) {
+  background-color: #777;
+}
+
+.horizontals li {
+  min-width: 100vw;
+  display: flex;
+  padding: 30px;
+  background-color: #333;
+  color: #fff;
+}
+
+#horizontal-item {
+  height: 100vh;
+  flex-direction: column;
+}

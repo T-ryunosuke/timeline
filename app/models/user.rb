@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
-  # mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, AvatarUploader
 
   has_many :milestones
 

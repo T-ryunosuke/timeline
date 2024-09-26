@@ -45,7 +45,7 @@ ja:
     create:
       success: ユーザー登録が完了しました
       failure: ユーザー登録に失敗しました
-  timelines:
+  milestones:
     index:
       title: 年表一覧
     new:

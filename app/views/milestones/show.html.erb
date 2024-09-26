@@ -1,0 +1,34 @@
+<section class="horizontalWrapper relative h-screen p-8 overflow-x-auto">
+  <ul class="horizontals absolute top-0 left-0 flex w-full h-screen">
+    <li class="items-center justify-center">
+      <h1 class="text-5xl ml-20 font-noto font-thin"><%= @milestone.title %>の年表<h1>
+      <div class="ml-20"><%= image_tag('path.png') %><div>
+    </li>
+    <li id="horizontal-item">
+      <p>幼少期</p>
+      <div class="w-1/2 mx-auto flex-grow flex items-center">
+        <div class="textarea border rounded-sm w-full p-4 text-lg leading-tight break-words font-noto font-light">
+          <%= simple_format(@milestone.childhood_content) %>
+        </div>
+      </div>
+    </li>
+
+    <li id="horizontal-item">
+      <p>青年期</p>
+      <!-- adulthood_content を中央に配置 -->
+      <div class="w-1/2 mx-auto flex-grow flex items-center">
+        <div class="textarea border rounded-sm w-full p-4 text-lg leading-tight break-words font-noto font-light">
+          <%= simple_format(@milestone.adulthood_content) %>
+        </div>
+      </div>
+    </li>
+    <li id="horizontal-item">
+      <p>成人期</p>
+      <div class="w-1/2 mx-auto flex-grow flex items-center">
+        <div class="textarea border rounded-sm w-full p-4 text-lg leading-tight break-words font-noto font-light">
+          <%= simple_format(@milestone.mature_age_content) %>
+        </div>
+      </div>
+    </li>
+  </ul>
+</section>

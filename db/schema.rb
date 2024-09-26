@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_25_083151) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_25_143336) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "milestones", force: :cascade do |t|
+    t.string "title", limit: 255, null: false
+    t.json "childhood_images"
+    t.string "adolescence_image"
+    t.string "adulthood_image"
+    t.string "mature_age_image"
+    t.text "childhood_content", null: false
+    t.text "adulthood_content", null: false
+    t.text "mature_age_content", null: false
+    t.integer "status", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_milestones_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
@@ -25,4 +41,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_25_083151) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
   end
+
+  add_foreign_key "milestones", "users"
 end

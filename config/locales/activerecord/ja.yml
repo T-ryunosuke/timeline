@@ -9,12 +9,12 @@ ja:
         password: パスワード
         password_confirmation: パスワード確認
         avatar: アバター
-      timeline:
+      milestone:
         title: タイトル
-        content_1: 内容１
-        content_2: 内容２
-        content_2: 内容３
-        image_1: 画像１
-        image_2: 画像２
-        image_3: 画像３
-        images: 複数画像
+        childhood_content: 内容１
+        adulthood_content: 内容２
+        mature_age_content: 内容３
+        childhood_images: 画像１(複数画像)
+        adolescence_image: 画像２
+        adulthood_image: 画像３
+        mature_age_image: 画像４

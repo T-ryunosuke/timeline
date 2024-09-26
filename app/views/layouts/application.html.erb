@@ -9,10 +9,38 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"/>
   </head>
 
-  <body>
+  <body class="bg-slate-400">
     <%= render "shared/flash_message" %>
+
+    <div class="fixed top-5 right-5 z-50">
+      <button onclick="toggleMenu()" class="bg-gray-800 text-white rounded-full w-12 h-12 text-2xl hover:bg-gray-700">
+        <i class="ri-menu-line"></i>
+      </button>
+    </div>
+
+    <div id="menu" class="fixed top-16 right-5 bg-white border border-gray-300 rounded-lg shadow-lg z-40 hidden">
+      <ul class="p-2">
+        <li class="py-1"><%= link_to milestones_path do %>年表リスト<% end %></li>
+        <% if logged_in? %>
+          <li class="py-1"><%= link_to new_milestone_path do %>年表作成<% end %></li>
+          <li class="py-1"><%= link_to logout_path, data: { turbo_method: :delete } do %>ログアウト<% end %></li>
+        <% else %>
+          <li class="py-1"><%= link_to login_path do %>ログイン<% end %></li>
+        <% end %>
+      </ul>
+    </div>
+
     <%= yield %>
   </body>
 </html>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("hidden");
+  }
+</script>

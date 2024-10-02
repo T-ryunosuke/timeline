@@ -2,7 +2,7 @@
   <div class="group flex flex-col h-20 p-3 border border-black/50 rounded-md bg-slate-300 overflow-hidden transition duration-500 hover:shadow-2xl hover:bg-white">
     <div class="flex flex-col items-center">
       <div class="flex-grow w-full relative">
-        <%= link_to milestone_path(milestone) do %>
+        <%= link_to milestone_path(milestone), data: { turbo: false } do %>
           <div class="flex">
             <div class="relative -left-8 -top-5">
               <%= image_tag(milestone.user.avatar.url, class: 'border border-1 border-slate-400 rounded-full size-24 group-hover:shadow-2xl grayscale group-hover:filter-none group-hover:rotate-12 transition duration-500') %>

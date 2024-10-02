@@ -4,23 +4,62 @@
 @tailwind components;
 @tailwind utilities;
 
-section:nth-of-type(even) {
-  background-color: #eee;
-}
+
 
 .horizontals li:nth-of-type(even) {
   background-color: #777;
 }
 
-.horizontals li {
-  min-width: 100vw;
-  display: flex;
-  padding: 30px;
-  background-color: #333;
-  color: #fff;
+.horizontals li:nth-of-type(2) {
+  background-color: skyblue;
 }
 
-#horizontal-item {
-  height: 100vh;
-  flex-direction: column;
+.horizontals li:nth-of-type(3) {
+  background-color: #F4A15A;
+}
+
+.horizontals li:nth-of-type(4) {
+  background-color: #2B2762;
+}
+
+.line-clamp-15 {
+  display: -webkit-box;
+  -webkit-line-clamp: 15;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-14 {
+  display: -webkit-box;
+  -webkit-line-clamp: 14;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-17 {
+  display: -webkit-box;
+  -webkit-line-clamp: 17;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-6 {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+.spikes::after {
+  content: '';
+  position: absolute;
+  left: -5px;
+  bottom: 0%;
+  top: 0;
+  z-index: 10;
+  display: block;
+  width: 10px;
+  background-size: 100% 10px;
+  background-image: linear-gradient(225deg, #2c3e50 25%, transparent 25%), linear-gradient(135deg, #2c3e50 25%, transparent 25%);
 }

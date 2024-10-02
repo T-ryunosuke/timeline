@@ -7,11 +7,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= favicon_link_tag('favi.ico') %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
-    rel="stylesheet"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/gh/dixonandmoe/rellax@master/rellax.min.js"></script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGYQ4M14G2"></script>
     <script>
@@ -37,7 +38,7 @@
         <li class="py-1"><%= link_to root_path do %>ホーム<% end %></li>
         <li class="py-1"><%= link_to milestones_path do %>年表リスト<% end %></li>
         <% if logged_in? %>
-          <li class="py-1"><%= link_to new_milestone_path do %>年表作成<% end %></li>
+          <li class="py-1"><%= link_to new_milestone_path, data: { turbo: false } do %>年表作成<% end %></li>
           <li class="py-1"><%= link_to logout_path, data: { turbo_method: :delete } do %>ログアウト<% end %></li>
         <% else %>
           <li class="py-1"><%= link_to login_path do %>ログイン<% end %></li>
@@ -47,11 +48,12 @@
 
     <%= yield %>
   </body>
-</html>
 
-<script>
-  function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.classList.toggle("hidden");
-  }
-</script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("hidden");
+    }
+  </script>
+
+</html>

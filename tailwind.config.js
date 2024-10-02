@@ -13,6 +13,10 @@ module.exports = {
       minWidth: {
         'screen': '100vw',
       },
+      boxShadow: {
+        'custom-shadow': '4px 5px #3e3e3e',
+        'custom-wide-shadow': '18px 20px rgba(62, 62, 62, 0.5)',
+      },
       keyframes: {
         flashFade: {
           "0%": { transform: "translateY(0px)", opacity: 1 },
@@ -36,11 +40,20 @@ module.exports = {
               transform: "scale(1.1)"
           },
         },
+        rgbGlitch: {
+          '0%': { transform: 'translate(0)', opacity: '1' },
+          '20%': { transform: 'translate(-2px)', opacity: '0.7', filter: 'none' },
+          '30%': { transform: 'translate(2px)', opacity: '0.5', filter: 'hue-rotate(45deg)' },
+          '40%': { transform: 'translate(-2px)', opacity: '0.7', filter: 'hue-rotate(-45deg)' },
+          '60%': { transform: 'translate(2px)', opacity: '1', filter: 'hue-rotate(90deg)' },
+          '100%': { transform: 'translate(0)', opacity: '1', filter: 'none' },
+        },
       },
       animation: {
         flash: "flashFade 4.0s forwards",
         quake: 'quake 0.6s linear',
         pulsate_fwd: "pulsate_fwd 5s ease infinite both",
+        rgb_glitch: 'rgbGlitch 0.3s ease-in-out forwards',
       },
     },
   },

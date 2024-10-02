@@ -1,8 +1,8 @@
 class Milestone < ApplicationRecord
-  # mount_uploaders :childhood_images:, ImageUploader
-  # mount_uploader :adolescence_image:, ImageUploader
-  # mount_uploader :adulthood_image:, ImageUploader
-  # mount_uploader :mature_age_image:, ImageUploader
+  mount_uploaders :childhood_images, ChildhoodImagesUploader
+  mount_uploader :adolescence_image, AdolescenceImageUploader
+  mount_uploader :adulthood_image, AdulthoodImageUploader
+  mount_uploader :mature_age_image, MatureAgeImageUploader
 
   belongs_to :user
 

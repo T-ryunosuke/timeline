@@ -1,31 +1,98 @@
-<section class="horizontalWrapper relative h-screen p-8 overflow-x-auto">
-  <ul class="horizontals absolute top-0 left-0 flex w-full h-screen">
-    <li class="items-center justify-center">
-      <h1 class="text-5xl ml-20 font-noto font-thin"><%= @milestone.title %>の年表<h1>
-      <div class="ml-20"><%= image_tag('path.png') %><div>
-    </li>
-    <li id="horizontal-item">
-      <div class="w-1/2 mx-auto flex-grow flex items-center">
-        <div class="textarea border rounded-sm w-full p-4 text-lg leading-tight break-words font-noto font-light">
-          <%= simple_format(@milestone.childhood_content) %>
-        </div>
-      </div>
+<meta name="turbo-cache-control" content="no-cache">
+<meta name="turbo-visit-control" content="reload">
+
+<div class="horizontalWrapper relative h-screen p-8">
+  <ul class="horizontals absolute top-0 left-0 flex h-full overflow-y-hidden min-h-[670px]">
+    <li class="flex items-center justify-center min-w-screen h-full px-8 bg-gray-400 text-white">
+      <h1 class="text-5xl ml-20 font-noto font-thin"><%= @milestone.title %>の年表</h1>
+      <div class="ml-20"><%= image_tag('path.png') %></div>
     </li>
 
-    <li id="horizontal-item">
-      <!-- adulthood_content を中央に配置 -->
-      <div class="w-1/2 mx-auto flex-grow flex items-center">
-        <div class="textarea border rounded-sm w-full p-4 text-lg leading-tight break-words font-noto font-light">
-          <%= simple_format(@milestone.adulthood_content) %>
+    <div class="flex items-center justify-center min-w-fit">
+      <%= image_tag('divide.png', class: 'h-full size-fit') %>
+    </div>
+
+    <li class="childhood relative min-w-[1000px] md:min-w-[1300px] flex text-white">
+
+      <div class="w-5/12 absolute top-32 left-32 pr-28 bg-[#0756CE] border-2 border-white shadow-custom-shadow">
+        <div class="textarea w-full p-4 text-base md:text-lg break-words font-noto font-light z-10">
+          <%= simple_format(@milestone.childhood_content, class: "leading-normal line-clamp-15 md:leading-loose") %>
         </div>
       </div>
+
+      <div class="absolute bottom-0 left-0">
+        <%= image_tag('people.png', class: "people h-64 z-50") %>
+      </div>
+
+      <div class="absolute top-0 right-32">
+        <%= image_tag('ponyo.png', class: "ponyo h-20 z-50") %>
+      </div>
+
+      <div id="slider" class="flex absolute top-[35%] right-32 w-[349px] h-[201px] md:w-[549px] md:h-[316px] bg-white border-8 border-white overflow-hidden shadow-custom-wide-shadow z-10">
+        <% if @milestone.childhood_images.present? %>
+          <% @milestone.childhood_images.each do |image| %>
+            <div class="slide min-w-fit z-10">
+              <img src="<%= image.url %>" class="w-[349px] h-[201px] md:w-[549px] md:h-[316px]">
+            </div>
+          <% end %>
+        <% else %>
+          <div class="w-full">
+            <%= image_tag('noise.jpg', class: "w-full h-full") %>
+          </div>
+        <% end %>
+      </div>
+
     </li>
-    <li id="horizontal-item">
-      <div class="w-1/2 mx-auto flex-grow flex items-center">
-        <div class="textarea border rounded-sm w-full p-4 text-lg leading-tight break-words font-noto font-light">
-          <%= simple_format(@milestone.mature_age_content) %>
+
+
+    <li class="spikes adulthood relative min-w-[1000px] min-h-[670px] md:min-w-[1300px] text-black">
+      <div class="w-11/12 absolute top-[14%] left-36">
+        <%= image_tag('board.png', class: "aspect-video min-w-[800px] md:min-w-[1000px] shadow-xl") %>
+      </div>
+      <div class="w-5/12 absolute top-[16%] left-36">
+        <div class="textarea w-full px-8 mt-8 md:mt-0 text-base md:text-lg break-words font-noto font-light z-10">
+          <%= simple_format(@milestone.adulthood_content, class: "leading-normal line-clamp-14 md:leading-loose") %>
         </div>
       </div>
+
+      <div class="flex flex-col absolute top-[18%] right-28 md:right-52 space-y-10 mt-2">
+        <div class="mx-auto w-[170px] h-[170px] md:w-[210px] md:h-[210px] bg-white border border-dashed rounded-full border-black/50 z-10">
+          <%= image_tag(@milestone.adolescence_image.url, class: "w-[170px] h-[170px] md:w-[210px] md:h-[210px] rounded-full") %>
+        </div>
+
+        <div class="w-[250px] h-[150px] md:w-[350px] md:h-[230px] bg-white border border-dashed border-black/50 z-10">
+          <%= image_tag(@milestone.adulthood_image.url, class: "w-[250px] h-[150px] md:w-[350px] md:h-[230px]") %>
+        </div>
+      </div>
+
+      <div class="absolute top-0 right-24 md:right-32">
+        <%= image_tag('spider.png', class: "spider h-60 z-50") %>
+      </div>
+
     </li>
+
+    <li class="min-w-screen h-screen min-h-[670px] text-white relative">
+      <div class="flex flex-col my-auto mt-20 md:mt-20 space-y-20 md:space-y-8">
+        <div class="flex items-center justify-center">
+          <div class="w-[400px] h-[230px] md:w-[650px] md:h-[350px] bg-black border border-black/50 z-10">
+            <%= image_tag(@milestone.adulthood_image.url, class: "w-[400px] h-[230px] md:w-[650px] md:h-[350px]") %>
+          </div>
+        </div>
+
+        <div class="textarea w-5/6 mx-auto border rounded-sm p-4 text-base md:text-lg leading-tight break-words font-noto font-light">
+          <%= simple_format(@milestone.mature_age_content, class: "leading-normal line-clamp-6 md:leading-loose ml-4") %>
+        </div>
+      </div>
+
+      <div class="absolute bottom-[50%] md:bottom-[38%] left-2 md:left-4">
+        <%= image_tag('ghost.png', class: "h-20 z-50") %>
+      </div>
+
+      <div class="absolute bottom-24 md:bottom-10 right-2 md:right-[5%]">
+        <%= image_tag('teresa.png', class: "h-20 z-50") %>
+      </div>
+
+    </li>
+
   </ul>
-</section>
+</div>

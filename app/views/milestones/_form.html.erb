@@ -1,34 +1,101 @@
-<div class="container h-screen mx-auto">
-  <div class="flex items-cente justify-center w-full">
-    <%= form_with model: milestone do |f| %>
-      <div class="my-6">
-        <%= f.label :title, class: "text-md" %>
-        <%= f.text_field :title, class: "border p-1 rounded-sm w-full" %>
-        <%= render 'shared/error_message_for_field', object: f.object, attribute: :title %>
-      </div>
+<div class="container mx-auto">
+  <div class="flex justify-center w-full">
+    <div class="w-2/3 max-w-[400px]">
 
-      <div class="mb-6">
-        <%= f.label :childhood_content, class: "text-md" %>
-        <%= f.text_area :childhood_content, class: 'border rounded-md p-2 h-24 w-full', placeholder: "例：幼少期" %>
-        <%= render 'shared/error_message_for_field', object: f.object, attribute: :childhood_content %>
-      </div>
+      <%= form_with model: milestone do |f| %>
+        <div class="my-6 font-noto font-light w-full">
+          <%= f.label :title, class: "text-md font-light" %>
+          <%= f.text_field :title, class: "border p-1 rounded-sm w-full" %>
+          <%= render 'shared/error_message_for_field', object: f.object, attribute: :title %>
+        </div>
 
-      <div class="mb-6">
-        <%= f.label :adulthood_content, class: "text-md" %>
-        <%= f.text_area :adulthood_content, class: 'border rounded-md p-2 h-24 w-full', placeholder: "例：青年期" %>
-        <%= render 'shared/error_message_for_field', object: f.object, attribute: :adulthood_content %>
-      </div>
+        <div class="mb-6 font-noto font-light">
+          <%= f.label :childhood_content, class: "text-md" %>
+          <%= f.text_area :childhood_content, class: 'border rounded-md p-2 h-24 w-full', placeholder: "例：幼年期" %>
+          <%= render 'shared/error_message_for_field', object: f.object, attribute: :childhood_content %>
+        </div>
 
-      <div class="mb-10">
-        <%= f.label :mature_age_content, class: "text-md" %>
-        <%= f.text_area :mature_age_content, class: 'border rounded-md p-2 h-24 w-full', placeholder: "例：成人後" %>
-        <%= render 'shared/error_message_for_field', object: f.object, attribute: :mature_age_content %>
-      </div>
+        <div class="mb-6 font-noto font-light">
+          <%= f.label :adulthood_content, class: "text-md" %>
+          <%= f.text_area :adulthood_content, class: 'border rounded-md p-2 h-24 w-full', placeholder: "例：青年期" %>
+          <%= render 'shared/error_message_for_field', object: f.object, attribute: :adulthood_content %>
+        </div>
 
-      <div class="text-center mb-6 sm:mb-10">
-        <%= f.submit t('helpers.submit.submit'), class: "border border-slate-600 bg-slate-600 text-white w-1/4 font-thin cursor-pointer hover:text-black hover:bg-white hover:shadow-lg transition duration-200" %>
-      </div>
-    <% end %>
+        <div class="mb-10 font-noto font-light">
+          <%= f.label :mature_age_content, class: "text-md" %>
+          <%= f.text_area :mature_age_content, class: 'border rounded-md p-2 h-24 w-full', placeholder: "例：成人後" %>
+          <%= render 'shared/error_message_for_field', object: f.object, attribute: :mature_age_content %>
+        </div>
 
+        <p class="mb-4 font-noto text-red-500 text-sm">※以下写真は任意です</p>
+
+        <div class="mb-6 font-noto">
+          <%= f.label "複数画像可：", class: "text-md font-light" %>
+          <label>
+            <span class="py-1 px-2 text-sm font-noto font-thin text-white bg-transparent border border-white rounded cursor-pointer hover:text-gray-400 hover:bg-gray-200 hover:border-transparent">ファイルを選択</span>
+            <%= f.file_field :childhood_images, multiple: true, include_hidden: false, class: 'hidden', id: 'childhood_images' %>
+          </label>
+
+          <div id="previews" class="flex flex-col items-center">
+            <% if @milestone.childhood_images.present? %>
+              <% @milestone.childhood_images.each do |image| %>
+                <%= image_tag(image.url, class: 'preview-image max-h-52 mt-3 ') %>
+              <% end %>
+            <% else %>
+              <%= image_tag('noise.jpg', class: 'preview-image max-h-52 mt-3 ') %>
+            <% end %>
+          </div>
+          <%= f.hidden_field :childhood_images_cache %>
+        </div>
+
+
+        <div class="mb-6 font-noto">
+          <%= f.label "画像１：", class: "text-md font-light" %>
+          <label>
+            <span class="py-1 px-2 text-sm font-noto font-thin text-white bg-transparent border border-white rounded cursor-pointer hover:text-gray-400 hover:bg-gray-200 hover:border-transparent">ファイルを選択</span>
+            <%= f.file_field :adolescence_image, class: 'hidden', id: 'adolescence_image' %>
+          </label>
+
+          <div class="flex items-center justify-center">
+            <%= image_tag(@milestone.adolescence_image.url, class: 'max-h-52 mt-3', id: 'first_preview') %>
+          </div>
+          <%= f.hidden_field :adolescence_image_cache %>
+        </div>
+
+
+        <div class="mb-6 font-noto">
+          <%= f.label "画像２：", class: "text-md font-light" %>
+          <label>
+            <span class="py-1 px-2 text-sm font-noto font-thin text-white bg-transparent border border-white rounded cursor-pointer hover:text-gray-400 hover:bg-gray-200 hover:border-transparent">ファイルを選択</span>
+            <%= f.file_field :adulthood_image, class: 'hidden', id: 'adulthood_image' %>
+          </label>
+
+          <div class="flex items-center justify-center">
+            <%= image_tag(@milestone.adulthood_image.url, class: 'max-h-52 mt-3', id: 'second_preview') %>
+          </div>
+          <%= f.hidden_field :adulthood_image_cache %>
+        </div>
+
+        <div class="mb-6 font-noto">
+          <%= f.label "画像３：", class: "text-md font-light" %>
+          <label>
+            <span class="py-1 px-2 text-sm font-noto font-thin text-white bg-transparent border border-white rounded cursor-pointer hover:text-gray-400 hover:bg-gray-200 hover:border-transparent">ファイルを選択</span>
+            <%= f.file_field :mature_age_image, class: 'hidden', id: 'mature_age_image' %>
+          </label>
+
+          <div class="flex items-center justify-center">
+            <%= image_tag(@milestone.mature_age_image.url, class: 'max-h-52 mt-3', id: 'third_preview') %>
+          </div>
+          <%= f.hidden_field :mature_age_image_cache %>
+        </div>
+
+
+
+        <div class="text-center mb-6 sm:mb-10">
+          <%= f.submit t('helpers.submit.submit'), class: "border border-slate-600 bg-slate-600 text-white w-1/4 font-thin cursor-pointer hover:text-black hover:bg-white hover:shadow-lg transition duration-200" %>
+        </div>
+      <% end %>
+
+    </div>
   </div>
 </div>

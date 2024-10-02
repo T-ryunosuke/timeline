@@ -6,22 +6,6 @@
 
 
 
-.horizontals li:nth-of-type(even) {
-  background-color: #777;
-}
-
-.horizontals li:nth-of-type(2) {
-  background-color: skyblue;
-}
-
-.horizontals li:nth-of-type(3) {
-  background-color: #F4A15A;
-}
-
-.horizontals li:nth-of-type(4) {
-  background-color: #2B2762;
-}
-
 .line-clamp-15 {
   display: -webkit-box;
   -webkit-line-clamp: 15;

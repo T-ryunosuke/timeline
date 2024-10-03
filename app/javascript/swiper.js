@@ -1,5 +1,4 @@
-
-
+// 未使用
 const swiper = new Swiper('.swiper', {
   loop: true,
   slidesPerView: 3,

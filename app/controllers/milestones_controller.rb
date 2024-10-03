@@ -1,7 +1,7 @@
 class MilestonesController < ApplicationController
 
   def index
-    @milestones = Milestone.includes(:user)
+    @milestones = Milestone.includes(:user).order(updated_at: :desc)
   end
 
   def new
@@ -28,7 +28,7 @@ class MilestonesController < ApplicationController
 
   def update
     @milestone = current_user.milestones.find(params[:id])
-    if @milestone.update
+    if @milestone.update(milestone_params)
       redirect_to milestone_path(@milestone), success: t("milestones.update.success")
     else
 
